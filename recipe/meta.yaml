@@ -10,7 +10,7 @@ source:
   patches:
     - 0001-Monkey-patch-distutils.ccompiler.spawn-to-elide-std-.patch
     - 0002-Link-against-grpc.patch
-    # - 0001-fix-win-setup.patch
+    - 0001-fix-win-setup.patch. # [win]
 
 build:
   number: 1
