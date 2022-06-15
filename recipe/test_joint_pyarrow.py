@@ -89,7 +89,7 @@ def test_flight_list_flights(server):
         assert len(list(flights)) == 1
 
 
-def test_flight_client_close():
+def test_flight_client_close(server):
     with flight.connect(('localhost', server.port)) as client:
         assert list(client.list_flights()) == []
         client.close()
