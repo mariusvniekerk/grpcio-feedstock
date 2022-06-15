@@ -43,7 +43,7 @@ requirements:
     - six >=1.6.0
     - zlib
     - openssl
-    - grpc-cpp {{ version }}
+    - {{ pin_compatible("grpc-cpp" , "x.x") }}
     - {{ pin_compatible("c-ares") }}  # [unix]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
