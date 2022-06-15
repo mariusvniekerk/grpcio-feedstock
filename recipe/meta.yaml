@@ -50,8 +50,11 @@ requirements:
 test:
   files:
     - distribtest.py
+    - test_joint_pyarrow.py
   requires:
     - pip
+    - pyarrow
+    - pytest
   imports:
     - grpc
     - grpc._cython
@@ -66,6 +69,9 @@ test:
   commands:
     - python -m pip check
     - python distribtest.py
+    # test against pyarrow test
+    - pytest -vrsx test_joint_pyarrow.py
+
 
 about:
   home: https://grpc.io
