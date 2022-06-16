@@ -14,7 +14,6 @@ source:
     - 0001-fix-win-commands.patch       # [win]
     - 0001-fix-win-setup.patch          # [win]
 
-
 build:
   number: 1
   skip: true  # [python_impl == 'pypy']
@@ -34,8 +33,7 @@ requirements:
     - six >=1.6.0
     - zlib
     - openssl
-    - grpc-cpp
-    - c-ares            # [unix]
+    - grpc-cpp {{ version }}
     - pthread-stubs     # [linux]
   run:
     - python
@@ -43,18 +41,17 @@ requirements:
     - six >=1.6.0
     - zlib
     - openssl
-    - {{ pin_compatible("grpc-cpp", max_pin="x.x") }}
-    - {{ pin_compatible("c-ares") }}  # [unix]
+    - {{ pin_compatible("grpc-cpp", max_pin="x.x.x") }}
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   files:
     - distribtest.py
-    - test_joint_pyarrow.py
+    # - test_joint_pyarrow.py
   requires:
     - pip
-    - pyarrow >=8
-    - pytest
+    # - pyarrow >=8
+    # - pytest
   imports:
     - grpc
     - grpc._cython
@@ -70,7 +67,7 @@ test:
     - python -m pip check
     - python distribtest.py
     # test against pyarrow test
-    - pytest -vrsx test_joint_pyarrow.py
+    # - pytest -vrsx test_joint_pyarrow.py
 
 
 about:
